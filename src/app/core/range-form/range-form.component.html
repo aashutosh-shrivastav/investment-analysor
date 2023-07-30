@@ -1,0 +1,23 @@
+<ng-container
+ id="index" [formGroup]="form">
+  <mat-form-field formControlName="fromAmount">
+    <mat-label>From Amount</mat-label>
+    <input type="number" mat-input >
+  </mat-form-field>
+  <mat-form-field formControlName="operator">
+    <mat-label>Operator</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let type of rangeTypes" [value]="type.id">
+        {{type.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field formControlName="toAmount">
+    <mat-label>To Amount</mat-label>
+    <input type="number" mat-input >
+  </mat-form-field>
+  <mat-form-field formControlName="rate">
+    <mat-label>Interest Rate</mat-label>
+    <input type="number" mat-input >
+  </mat-form-field>
+</ng-container>

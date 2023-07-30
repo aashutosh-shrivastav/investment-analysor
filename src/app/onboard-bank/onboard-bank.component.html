@@ -1,0 +1,112 @@
+<div>
+  <h2>Bank Onboarding</h2>
+  <!-- <div [formGroup]="formGroup">
+    <mat-vertical-stepper>
+      <mat-step >
+        <ng-template matStepLabel>Lets Onboard a bank.</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Bank Name</mat-label>
+          <input matInput formControlName="bankId">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addNewInvestmentDetail()">Add Investment Detail</button>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Select Account Type <button mat-icon-button> <mat-icon>delete</mat-icon></button></ng-template>
+        <div [formGroup]="">
+          <mat-form-field appearance="outline">
+            <mat-label>Investment Type</mat-label>
+            <mat-select formControlName="investmentType">
+              <mat-option *ngFor="let type of investmentOptions" [value]="type.id">
+                {{ type.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Compounding Type</mat-label>
+            <mat-select formControlName="compoundingType">
+              <mat-option *ngFor="let type of compoundingOptions" [value]="type.id">
+                {{ type.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Add Range Details</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Added Range Details table</ng-template>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div> -->
+
+
+  <section>
+    <form [formGroup]="formGroup">
+      <mat-form-field appearance="outline">
+        <mat-label>Bank Name</mat-label>
+        <input matInput formControlName="bankId">
+      </mat-form-field>
+      <!-- <button mat-raised-button color="primary" (click)="addNewInvestmentDetail()">Add Investment Detail</button> -->
+      <br>
+      <ng-container formArrayName="investmentDetails">
+        <ng-container *ngFor="let investmentDetail of investmentDetailsFormArray.controls; let i = index">
+          <ng-container [formGroup]="investmentDetail">
+            <mat-form-field appearance="outline">
+              <mat-label>Investment Type</mat-label>
+              <mat-select formControlName="investmentType">
+                <mat-option *ngFor="let type of investmentOptions" [value]="type.id">
+                  {{ type.value }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Compounding Type</mat-label>
+              <mat-select formControlName="compoundingType">
+                <mat-option *ngFor="let type of compoundingOptions" [value]="type.id">
+                  {{ type.value }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <ng-container formArrayName="range">
+              <ng-container *ngFor="let range of getrangeFormArray(investmentDetail); let j = index">
+                <div [formGroup]="range">
+                  <mat-form-field appearance="outline">
+                    <mat-label>From Amount</mat-label>
+                    <input type="number" matInput formControlName="fromAmount">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Operator</mat-label>
+                    <mat-select formControlName="operator">
+                      <mat-option *ngFor="let type of rangeTypes" [value]="type.id">
+                        {{ type.value }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>To Amount</mat-label>
+                    <input type="number" matInput formControlName="toAmount">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Interest Rate</mat-label>
+                    <input type="number" matInput formControlName="rate">
+                  </mat-form-field>
+                  <button mat-icon-button color="primary" >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </ng-container>
+            </ng-container>
+            <button mat-icon-button color="primary" (click)="addNewRange(investmentDetail)">
+              <mat-icon>add</mat-icon>Add Range
+            </button>
+            <button mat-icon-button color="primary" (click)="deleteInstructionDetailAtIndex(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <button mat-raised-button color="primary" type="submit">Save Bank Details</button>
+    </form>
+  </section>
+</div>

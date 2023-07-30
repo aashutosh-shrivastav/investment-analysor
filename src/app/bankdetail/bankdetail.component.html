@@ -1,0 +1,33 @@
+<!-- <p>bankdetail works!</p>
+<mat-vertical-stepper>
+  <mat-step>
+    <ng-template matStepLabel>Lets Onboard a bank.</ng-template>
+    <mat-form-field appearance="outline">
+      <mat-label>Bank Name</mat-label>
+      <input matInput formControlName="bankId">
+    </mat-form-field>
+    <button mat-raised-button color="primary" >Add Investment Detail</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Select Account Type</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Add Range Details</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Added Range Details table</ng-template>
+  </mat-step>
+</mat-vertical-stepper>
+
+<div [formGroup]="form">
+  <ng-container * ngFor="let control in form.controls">
+
+  </ng-container>
+
+  <ng-container *ngSwitch="controlType">
+    <mat-form-field *ngSwitchCase="'textarea'" appearance="outline">
+      <mat-label>Bank Name</mat-label>
+      <input matInput formControlName="bankId">
+    </mat-form-field>
+  </ng-container>
+</div> -->
